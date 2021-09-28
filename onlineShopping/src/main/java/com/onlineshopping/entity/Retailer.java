@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tbl_retailer")
 public class Retailer {
 	
 	@Id
@@ -24,8 +26,6 @@ public class Retailer {
 	
 	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
 	List<Product> product;
-
-
 	
 	
 	public Retailer() {
