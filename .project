@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>springProject</name>
+=======
 	<name>springProjectLti</name>
+>>>>>>> branch 'master' of https://github.com/sahasrask/springProject.git
 	<comment></comment>
 	<projects>
 	</projects>
