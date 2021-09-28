@@ -6,9 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tbl_products")
+@NamedQuery(name="fetch-all", query="select p from Product p")
 public class Product {
 	
 	@Id
@@ -16,20 +20,17 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "product_seq")
 	int productId;
 	String productName;
-	int productRating;
-	int quantity;
-	String description;
 	int productQuantity;
+	double productRating;
 	String productDescription;
-	String imageURL;
+	String productImageURL;
 	String productCategory;
-	int productPrice;
+	double productPrice;
 	
 
 	@ManyToOne
 	@JoinColumn(name="orderId")
-	Order order;
-	
+	Order order;	
 	
 	@ManyToOne
 	@JoinColumn(name="cartId")
@@ -39,21 +40,19 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name="retailerId")
 	Retailer retailer;
-	
-	
+		
+	public Product() {}
 
-	public Product() {
-	}
-
-
-	public Product(int productId, String productName, int productRating, int productQunatity, String productDescription,
-			String imageURL, String productCategory, int productPrice, Order order, Cart cart, Retailer retailer) {
+	public Product(int productId, String productName, int productQuantity, double productRating, String productDescription,
+			String productImageURL, String productCategory, double productPrice, Order order, Cart cart,
+			Retailer retailer) {
+		super();
 		this.productId = productId;
 		this.productName = productName;
+		this.productQuantity = productQuantity;
 		this.productRating = productRating;
-		this.productQuantity = productQunatity;
 		this.productDescription = productDescription;
-		this.imageURL = imageURL;
+		this.productImageURL = productImageURL;
 		this.productCategory = productCategory;
 		this.productPrice = productPrice;
 		this.order = order;
@@ -66,115 +65,89 @@ public class Product {
 		return productId;
 	}
 
-
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-
 
 	public String getProductName() {
 		return productName;
 	}
 
-
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 
-
-	public int getProductRating() {
-		return productRating;
-	}
-
-
-	public void setProductRating(int productRating) {
-		this.productRating = productRating;
-	}
-
-
-	public int getProductQunatity() {
+	public int getProductQuantity() {
 		return productQuantity;
 	}
 
-
-	public void setProductQunatity(int productQunatity) {
-		this.productQuantity = productQunatity;
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
 	}
 
+	public double getProductRating() {
+		return productRating;
+	}
+
+	public void setProductRating(double productRating) {
+		this.productRating = productRating;
+	}
 
 	public String getProductDescription() {
 		return productDescription;
 	}
 
-
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
 
-
-	public String getImageURL() {
-		return imageURL;
+	public String getProductImageURL() {
+		return productImageURL;
 	}
 
-
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
+	public void setProductImageURL(String productImageURL) {
+		this.productImageURL = productImageURL;
 	}
-
 
 	public String getProductCategory() {
 		return productCategory;
 	}
 
-
 	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
 	}
 
-
-	public int getProductPrice() {
+	public double getProductPrice() {
 		return productPrice;
 	}
 
-
-	public void setProductPrice(int productPrice) {
+	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}
-
 
 	public Order getOrder() {
 		return order;
 	}
 
-
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-
 
 	public Cart getCart() {
 		return cart;
 	}
 
-
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-
 
 	public Retailer getRetailer() {
 		return retailer;
 	}
 
-
 	public void setRetailer(Retailer retailer) {
 		this.retailer = retailer;
 	}
-
-	
-	
-	
-	
 	
 	
 }
