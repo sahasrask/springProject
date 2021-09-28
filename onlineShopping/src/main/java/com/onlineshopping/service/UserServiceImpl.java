@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
 	UserRepository repository;
 	
 	@Override
-	public User RegisterUser(User user) {
+	public User registerUser(User user) {
 		
-		return repository.RegisterUser(user);
+		return repository.registerUser(user);
 	}
 
 	@Override

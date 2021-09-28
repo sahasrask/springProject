@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tbl_products")
 @NamedQuery(name="fetch-all", query="select p from Product p")
 public class Product {
 	
