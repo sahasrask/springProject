@@ -12,7 +12,7 @@ import com.onlineshopping.entity.Order;
 import com.onlineshopping.entity.User;
 
 @Repository
-public class UserRepositoryImlp implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 	
 	@PersistenceContext
 	EntityManager em;
