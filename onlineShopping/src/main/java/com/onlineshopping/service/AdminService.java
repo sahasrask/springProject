@@ -1,14 +1,12 @@
-package com.onlineshopping.repository;
+package com.onlineshopping.service;
 
 import java.util.List;
 
 import com.onlineshopping.entity.Admin;
-import com.onlineshopping.entity.Order;
-import com.onlineshopping.entity.Product;
 import com.onlineshopping.entity.Retailer;
 import com.onlineshopping.entity.User;
 
-public interface AdminRepository {
+public interface AdminService {
 	
 	Admin addOrUpdateAdmin(Admin admin);
 	
@@ -16,15 +14,12 @@ public interface AdminRepository {
 	
 	void deleteRetailer(Retailer retailer);
 	
-	Retailer findRetailerByRetailerId(int retailerId);
+	Retailer findRetailerByRetailerId(int userId);
 		
 	List<Retailer> viewAllRetailers();
 	
 	List<User> viewAllUsers();
 	
 	User findUserByUserId(int userId);
-	
 
-
-	
 }
