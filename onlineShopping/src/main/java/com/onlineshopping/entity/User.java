@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="user_prj")
+@Table(name="tbl_users")
 public class User {
 	
 	@Id

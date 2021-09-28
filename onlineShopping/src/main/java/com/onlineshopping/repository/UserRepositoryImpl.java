@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshopping.entity.Order;
 import com.onlineshopping.entity.User;
@@ -17,12 +18,14 @@ public class UserRepositoryImpl implements UserRepository {
 	@PersistenceContext
 	EntityManager em;
 	@Override
-	public User RegisterUser(User user) {
+	@Transactional
+	public User registerUser(User user) {
 		User persistedUser = em.merge(user);
 		return persistedUser;
 	}
 
 	@Override
+	@Transactional
 	public boolean loginUser(String email, String password){
 		
 		String jpql="select count(u) from User u where u.email=:em and u.password=:pwd";
@@ -35,6 +38,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
+	@Transactional
 	public User updateUser(User user) {
 		
 		User u=em.merge(user);
@@ -48,6 +52,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
+	@Transactional
 	public boolean resetUserPassword(int userId,String password) {
 		String jpql="update User u set u.password=:pwd where u.userId=:userId ";
 		Query query=em.createQuery(jpql);
@@ -59,6 +64,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
+	@Transactional
 	public boolean deleteUserById(int userId) {
 		String jpql="delete from User u where u.userId=:userId";
 		Query query=em.createQuery(jpql);
