@@ -2,6 +2,8 @@ package com.onlineshopping.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.onlineshopping.entity.Product;
 
 public interface ProductRepository {
