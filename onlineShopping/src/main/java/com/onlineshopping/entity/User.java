@@ -21,18 +21,18 @@ public class User {
 	@Id
 	@SequenceGenerator(name="usr_seq",initialValue = 1000,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "usr_seq")
-	int user_id;
-	String firstName;
-	String lastName;
-	String mobile;
-	String email;
-	String password;
+	private int user_id;
+	private String firstName;
+	private String lastName;
+	private String mobile;
+	private String email;
+	private String password;
 	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-	List<Order> orders;
+	private List<Order> orders;
 	
 	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
-	Cart cart;
+	private Cart cart;
 	
 	
 
@@ -101,7 +101,23 @@ public class User {
 		this.password = password;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
 
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	
 
 	
 	
