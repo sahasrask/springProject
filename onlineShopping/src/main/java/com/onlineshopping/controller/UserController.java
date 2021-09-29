@@ -32,8 +32,8 @@ public class UserController {
 			  u.setPassword(user.getPassword());
 			  u.setEmail(user.getEmail());
 			  Cart c=cartService.addCartForaUser();
-			  c.setUser(u);
 			  u.setCart(c);
+			  c.setUser(u);
 			  System.out.println(user.toString());
 			return userService.registerUser(u);
 		} catch (Exception e) {

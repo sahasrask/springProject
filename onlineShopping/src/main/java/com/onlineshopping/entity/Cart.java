@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,9 +23,9 @@ public class Cart {
 	int cartQuantity;
 	int cartTotalAmount;
 //	List<Integer> productIds;
-	@OneToOne   
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="user_id")
 	User user;
-	
 	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
 	List<CartItems> cartItems;
 		
