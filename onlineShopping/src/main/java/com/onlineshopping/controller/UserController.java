@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.dto.LoginDto;
 import com.onlineshopping.dto.UserDto;
+import com.onlineshopping.entity.Cart;
 import com.onlineshopping.entity.User;
+import com.onlineshopping.service.CartService;
 import com.onlineshopping.service.UserService;
 @CrossOrigin("*")
 @RestController
 public class UserController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	CartService cartService;
 
 	@PostMapping(path = "/register")
 	public User register(@RequestBody UserDto user) {
@@ -27,6 +31,9 @@ public class UserController {
 			  u.setMobile(user.getMobile());
 			  u.setPassword(user.getPassword());
 			  u.setEmail(user.getEmail());
+			  Cart c=cartService.addCartForaUser();
+			  c.setUser(u);
+			  u.setCart(c);
 			  System.out.println(user.toString());
 			return userService.registerUser(u);
 		} catch (Exception e) {

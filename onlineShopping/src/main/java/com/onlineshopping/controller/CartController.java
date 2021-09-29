@@ -9,44 +9,29 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.dto.CartDto;
+import com.onlineshopping.dto.ProductDto;
 import com.onlineshopping.entity.Cart;
 import com.onlineshopping.entity.Product;
 import com.onlineshopping.service.CartService;
+import com.onlineshopping.service.ProductService;
 
 @RestController
 @CrossOrigin
 public class CartController {
 	@Autowired
 	CartService cartService;
+	@Autowired
+	ProductService productService;
 
-	@PostMapping(path = "/addProductTocart")
-	public Cart addProductToCart(@RequestBody CartDto cartDto) {
-		try {
-			Cart c = new Cart();
-			c.setCartQuantity(cartDto.getCartQuantity());
-			c.setCartTotalAmount(cartDto.getCartTotalAmount());
 
-			return cartService.addProductToCart(c);
-		} catch (Exception e) {
-			System.out.println("Error!");
-		}
-
-		return null;
-
-	}
-
-	@PostMapping(path = "/removeFromCart")
-	public void deleteProductsFromCart(@RequestBody Cart cart) {
-		try {
-			cartService.deleteProductsFromCart(cart.getCartId());
-			System.out.println("User deleted Successfully");
-		} catch (Exception e) {
-			System.out.println("Error!");
-		}
-
+	@PostMapping("/addCart")
+	public Cart addACartForAUser() 
+	{
+		return cartService.addCartForaUser();
 	}
 
 	@GetMapping("/viewAllProductsInCart")
