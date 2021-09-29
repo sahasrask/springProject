@@ -10,19 +10,17 @@ import com.onlineshopping.entity.User;
 
 public interface AdminRepository {
 	
-	void addOrUpdateAdmin(Admin admin);
-	
-	Retailer addRetailer(Retailer retailer);
-	
-	void deleteRetailer(Retailer retailer);
-	
-	Retailer findRetailerByRetailerId(int retailerId);
-		
-	List<Retailer> viewAllRetailers();
+void addOrUpdateAdmin(Admin admin);
 	
 	List<User> viewAllUsers();
 	
 	User findUserByUserId(int userId);
+	
+	void addProduct(Product product);
+	
+	List<Product> viewAllProducts();
+	
+	Product findProductById(int productId);
 	
 
 

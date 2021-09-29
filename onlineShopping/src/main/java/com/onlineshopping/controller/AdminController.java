@@ -1,5 +1,7 @@
 package com.onlineshopping.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.dto.AdminDto;
+import com.onlineshopping.dto.ProductDto;
+import com.onlineshopping.dto.UserDto;
 import com.onlineshopping.entity.Admin;
+import com.onlineshopping.entity.Product;
+import com.onlineshopping.entity.User;
 import com.onlineshopping.service.AdminService;
 
 @RestController
@@ -16,7 +22,7 @@ import com.onlineshopping.service.AdminService;
 public class AdminController {
 	
 	@Autowired
-	AdminService adminService;
+	private AdminService adminService;
 	
 	@PostMapping("/addAdmin")
 	public void addOrUpdateAdmin(@RequestBody AdminDto adminDto) {
@@ -29,10 +35,44 @@ public class AdminController {
 		admin.setAdminPassword(adminDto.getAdminPassword());
 		
 		adminService.addOrUpdateAdmin(admin);
+
+	}
+	
+	@GetMapping(path="/viewAllProductss")
+	public List<Product> viewAllProducts(){
+		try {
+			return adminService.viewAllProducts();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@PostMapping("/addProducts")
+	public void addProduct(@RequestBody ProductDto productDto) {
 		
-		
+			
+			Product p=new Product();
+			p.setProductName(productDto.getProductName());
+			p.setProductQuantity(productDto.getProductQuantity());
+			p.setProductDescription(productDto.getProductDescription());
+			p.setProductPrice(productDto.getProductPrice());
+			p.setProductRating(productDto.getProductRating());
+			p.setProductCategory(productDto.getProductCategory());
+			p.setProductImageURL(productDto.getProductImageURL());
+			
+			adminService.addProduct(p);
 		
 	}
 	
+	@GetMapping(path="/viewAllusers")
+	public List<User> viewAllUsers(){
+		try {
+			return adminService.viewAllUsers();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

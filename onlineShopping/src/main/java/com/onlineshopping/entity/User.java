@@ -38,6 +38,10 @@ public class User {
 	@JoinColumn(name="user_id")
 	@JsonIgnore
 	private Cart cart;
+	
+	
+	@ManyToOne
+	Admin admin;
 
 	public User() {
 		super();

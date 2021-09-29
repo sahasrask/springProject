@@ -36,6 +36,9 @@ public class Product {
 	@OneToOne(mappedBy = "product",cascade = CascadeType.ALL)
 	@JoinColumn
 	CartItems cartItems;
+	
+	@ManyToOne
+	Admin admin;
 //	
 	
 //	@ManyToOne

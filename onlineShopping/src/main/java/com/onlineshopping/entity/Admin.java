@@ -25,7 +25,10 @@ public class Admin {
 	
 	
 	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-	List<Retailer> retailer;
+	List<Product> product;
+	
+	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
+	List<User> user;
 	
 
 	public Admin() {

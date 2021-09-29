@@ -27,6 +27,36 @@ public class AdminRepositoryImpl implements AdminRepository{
 		em.merge(admin);  //persistence state
 		
 	}
+	
+	public List<User> viewAllUsers() {
+		String jpql="select a from Admin a.user.User";
+		Query query= em.createQuery(jpql);
+		List<User> users= query.getResultList();
+		return users;
+	}
+
+	public User findUserByUserId(int userId) {
+		User u=em.find(User.class, userId);
+		return u;
+	}
+
+
+	@Transactional
+	public void addProduct(Product product) {
+		em.merge(product);
+	}
+
+	public List<Product> viewAllProducts() {
+		String jpql="select p from Product p";
+		Query query= em.createQuery(jpql);
+		List<Product> product= query.getResultList();
+		return product;
+	}
+
+	public Product findProductById(int productId) {
+		Product p=em.find(Product.class, productId);
+		return p;
+	}
 
 //	public void deleteProducts(Product productId) {
 //		String jpql="delete a from Admin a where a.product.productId=:pid";
@@ -35,16 +65,16 @@ public class AdminRepositoryImpl implements AdminRepository{
 //		
 //	}
 	
-	@Transactional
-	public Retailer addRetailer(Retailer retailer) {
-		Retailer persistedRetailer=em.merge(retailer);  
-		return persistedRetailer;
-	}
-
-	public void deleteRetailer(Retailer retailer) {
-		em.remove(retailer);
-		
-	}
+//	@Transactional
+//	public Retailer addRetailer(Retailer retailer) {
+//		Retailer persistedRetailer=em.merge(retailer);  
+//		return persistedRetailer;
+//	}
+//
+//	public void deleteRetailer(Retailer retailer) {
+//		em.remove(retailer);
+//		
+//	}
 
 //	public List<Order> viewOrders() {
 //		// TODO Auto-generated method stub
@@ -60,17 +90,7 @@ public class AdminRepositoryImpl implements AdminRepository{
 //		return p;
 //	} 
 
-	public List<User> viewAllUsers() {
-		String jpql="select a from Admin a.user.User";
-		Query query= em.createQuery(jpql);
-		List<User> users= query.getResultList();
-		return users;
-	}
 
-	public User findUserByUserId(int userId) {
-		User u=em.find(User.class, userId);
-		return u;
-	}
 
 //	@Override
 //	public List<Order> viewOrders(User user) {
@@ -78,19 +98,19 @@ public class AdminRepositoryImpl implements AdminRepository{
 //		return null;
 //	}
 
-	@Override
-	public List<Retailer> viewAllRetailers() {
-		String jpql="select r from Retailer r";
-		Query query= em.createQuery(jpql);
-		List<Retailer> retailer= query.getResultList();
-		return retailer;
+//	@Override
+//	public List<Retailer> viewAllRetailers() {
+//		String jpql="select r from Retailer r";
+//		Query query= em.createQuery(jpql);
+//		List<Retailer> retailer= query.getResultList();
+//		return retailer;
+//	}
+//
+//	@Override
+//	public Retailer findRetailerByRetailerId(int retailerId) {
+//		Retailer r=em.find(Retailer.class, retailerId);
+//		return r;
+
 	}
 
-	@Override
-	public Retailer findRetailerByRetailerId(int retailerId) {
-		Retailer r=em.find(Retailer.class, retailerId);
-		return r;
 
-	}
-
-}
