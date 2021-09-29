@@ -23,8 +23,8 @@ public class Retailer {
 	String retailerPassword;
 	
 	
-	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
-	List<Product> product;
+//	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
+//	List<Product> product;
 	
 	
 	public Retailer() {
@@ -32,14 +32,15 @@ public class Retailer {
 	}
 
 
-	public Retailer(int retailerId, String retailerName, String retailerEmail, String retailerPassword,
-			List<Product> product) {
+	public Retailer(int retailerId, String retailerName, String retailerEmail, String retailerPassword
+//			List<Product> product
+			) {
 		super();
 		this.retailerId = retailerId;
 		this.retailerName = retailerName;
 		this.retailerEmail = retailerEmail;
 		this.retailerPassword = retailerPassword;
-		this.product = product;
+		//this.product = product;
 	}
 
 
@@ -83,14 +84,14 @@ public class Retailer {
 	}
 
 
-	public List<Product> getProduct() {
-		return product;
-	}
-
-
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
+//	public List<Product> getProduct() {
+//		return product;
+//	}
+//
+//
+//	public void setProduct(List<Product> product) {
+//		this.product = product;
+//	}
 	
 	
 	

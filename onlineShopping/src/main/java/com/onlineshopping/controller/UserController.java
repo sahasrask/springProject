@@ -21,9 +21,12 @@ public class UserController {
 	@PostMapping(path = "/register")
 	public User register(@RequestBody UserDto user) {
 		try {
-			  User u= new User(); u.setFirstName(user.getFirstName());
-			  u.setLastName(user.getLastName()); u.setMobile(user.getMobile());
-			  u.setPassword(user.getPassword()); u.setEmail(user.getEmail());
+			  User u= new User();
+			  u.setFirstName(user.getFirstName());
+			  u.setLastName(user.getLastName()); 
+			  u.setMobile(user.getMobile());
+			  u.setPassword(user.getPassword());
+			  u.setEmail(user.getEmail());
 			  System.out.println(user.toString());
 			return userService.registerUser(u);
 		} catch (Exception e) {

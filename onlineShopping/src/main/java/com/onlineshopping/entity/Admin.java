@@ -22,10 +22,6 @@ public class Admin {
 	String adminEmail;
 	String adminPassword;
 	
-	
-	
-	
-	
 	public Admin() {
 		super();
 	}

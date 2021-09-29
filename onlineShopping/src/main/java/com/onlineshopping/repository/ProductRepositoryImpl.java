@@ -29,6 +29,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
+	@Transactional
 	public List<Product> viewAllProducts() {
 		return em.createNamedQuery("fetch-all").getResultList();
 	}
