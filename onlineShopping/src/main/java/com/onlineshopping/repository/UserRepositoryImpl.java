@@ -26,15 +26,15 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	@Transactional
-	public boolean loginUser(String email, String password){
+	public User loginUser(String email, String password){
 		
 		String jpql="select count(u) from User u where u.email=:em and u.password=:pwd";
 		Query query=em.createQuery(jpql);
 		query.setParameter("em", email);
 		query.setParameter("pwd", password);
 		Long count=(Long)query.getSingleResult();
-		
-		return count>0?true:false;
+		User u =em.find(User.class, email);
+		return count>0? u:null;
 	}
 
 	@Override

@@ -16,8 +16,8 @@ public class CartRepositoryImpl implements CartRepository{
 	
 	@Transactional
 	public Cart addProductToCart(Cart cart) {
-		Cart persistedPerson=em.merge(cart);
-		return null;
+		Cart c=em.merge(cart);
+		return c;
 	}
 
 
