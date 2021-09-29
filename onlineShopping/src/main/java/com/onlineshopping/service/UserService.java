@@ -7,7 +7,7 @@ import com.onlineshopping.entity.User;
 
 public interface UserService {
 	User registerUser(User user);
-	public boolean loginUser(String email, String password);
+	public User loginUser(String email, String password);
 	User updateUser(User user);
 	User findUserByUserId(int userId);
 	public boolean resetUserPassword(int userId,String password);

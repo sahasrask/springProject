@@ -26,6 +26,8 @@ public class ProductController {
 	@PostMapping(path="/addProduct")
 	public int add(@RequestBody ProductDto productDto) {
 		try {
+
+			
 			Product p=new Product();
 			p.setProductName(productDto.getProductName());
 			p.setProductQuantity(productDto.getProductQuantity());
@@ -45,7 +47,7 @@ public class ProductController {
 	@GetMapping(path="/viewAllProducts")
 	public List<Product> viewAllProducts(){
 		try {
-			return productService.viewAllProduct();
+			return productService.viewAllProducts();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

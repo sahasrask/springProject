@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean loginUser(String email, String password) {
+	public User loginUser(String email, String password) {
 		
 		return repository.loginUser(email, password);
 	}

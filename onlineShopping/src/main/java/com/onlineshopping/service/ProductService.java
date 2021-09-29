@@ -9,5 +9,5 @@ public interface ProductService {
 	Product getProductById(int productId);
 	void updateProduct(Product product);
 	int removeProduct(int productId);
-	List<Product> viewAllProduct();
+	List<Product> viewAllProducts();
 }
