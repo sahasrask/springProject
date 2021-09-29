@@ -3,21 +3,23 @@ package com.onlineshopping.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.onlineshopping.entity.Admin;
 import com.onlineshopping.entity.Retailer;
 import com.onlineshopping.entity.User;
 import com.onlineshopping.repository.AdminRepository;
 
+@Service
 public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	AdminRepository adminrepo;
 
 	@Override
-	public Admin addOrUpdateAdmin(Admin admin) {
+	public void addOrUpdateAdmin(Admin admin) {
 		
-		return adminrepo.addOrUpdateAdmin(admin);
+		adminrepo.addOrUpdateAdmin(admin);
 	}
 
 	@Override

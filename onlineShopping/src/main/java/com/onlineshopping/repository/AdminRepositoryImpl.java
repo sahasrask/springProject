@@ -5,9 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshopping.entity.Admin;
 import com.onlineshopping.entity.Order;
@@ -15,16 +16,16 @@ import com.onlineshopping.entity.Product;
 import com.onlineshopping.entity.Retailer;
 import com.onlineshopping.entity.User;
 
-@Component
+@Repository
 public class AdminRepositoryImpl implements AdminRepository{
 	
 	@PersistenceContext
 	EntityManager em;
 
 	@Transactional
-	public Admin addOrUpdateAdmin(Admin admin) {
-		Admin persistedAdmin=em.merge(admin);  //persistence state
-		return persistedAdmin;
+	public void addOrUpdateAdmin(Admin admin) {
+		em.merge(admin);  //persistence state
+		
 	}
 
 //	public void deleteProducts(Product productId) {

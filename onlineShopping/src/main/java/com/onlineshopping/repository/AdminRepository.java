@@ -10,7 +10,7 @@ import com.onlineshopping.entity.User;
 
 public interface AdminRepository {
 	
-	Admin addOrUpdateAdmin(Admin admin);
+	void addOrUpdateAdmin(Admin admin);
 	
 	Retailer addRetailer(Retailer retailer);
 	

@@ -14,7 +14,6 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Cart {
 	
-	
 	@Id
 	@SequenceGenerator(name="cart_seq",initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cart_seq")
@@ -26,25 +25,21 @@ public class Cart {
 	@JoinColumn(name="userId")
 	User user;
 	
-	@OneToMany
-	@JoinColumn(name="productId")
-	List<Product> products;
-
-	
-	
-	
-	
+//	@OneToMany
+//	@JoinColumn(name="productId")
+//	List<Product> products;
+		
 	public Cart() {
 		super();
 	}
 
-	public Cart(int cartId, int cartQuantity, int cartTotalAmount, User user, List<Product> products) {
-		super();
+	public Cart(int cartId, int cartQuantity, int cartTotalAmount, User user//, List<Product> products
+			) {
 		this.cartId = cartId;
 		this.cartQuantity = cartQuantity;
 		this.cartTotalAmount = cartTotalAmount;
 		this.user = user;
-		this.products = products;
+//		this.products = products;
 	}
 
 	public int getCartId() {
@@ -79,17 +74,12 @@ public class Cart {
 		this.user = user;
 	}
 
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-	
-	
-	
-	
-	
+//	public List<Product> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(List<Product> products) {
+//		this.products = products;
+//	}	
 	
 }

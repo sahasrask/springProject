@@ -8,7 +8,7 @@ import com.onlineshopping.entity.User;
 
 public interface AdminService {
 	
-	Admin addOrUpdateAdmin(Admin admin);
+	void addOrUpdateAdmin(Admin admin);
 	
 	Retailer addRetailer(Retailer retailer);
 	

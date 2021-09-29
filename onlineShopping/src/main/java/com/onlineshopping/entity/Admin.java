@@ -27,9 +27,8 @@ public class Admin {
 	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
 	List<Retailer> retailer;
 	
-	
+
 	public Admin() {
-		super();
 	}
 	public Admin(int adminId, String adminFirstName, String adminLastName, String adminMobileNumber, String adminEmail,
 			String adminPassword) {

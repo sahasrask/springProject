@@ -27,24 +27,24 @@ public class Product {
 	double productPrice;
 	
 
-	@ManyToOne
-	@JoinColumn(name="orderId")
-	Order order;	
+//	@ManyToOne
+//	@JoinColumn(name="orderId")
+//	Order order;	
+//	
+//	@ManyToOne
+//	@JoinColumn(name="cartId")
+//	Cart cart;
+//	
 	
-	@ManyToOne
-	@JoinColumn(name="cartId")
-	Cart cart;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="retailerId")
-	Retailer retailer;
+//	@ManyToOne
+//	@JoinColumn(name="retailerId")
+//	Retailer retailer;
 		
 	public Product() {}
 
 	public Product(int productId, String productName, int productQuantity, double productRating, String productDescription,
-			String productImageURL, String productCategory, double productPrice, Order order, Cart cart,
-			Retailer retailer) {
+			String productImageURL, String productCategory, double productPrice //, Order order, Cart cart
+			) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -54,9 +54,9 @@ public class Product {
 		this.productImageURL = productImageURL;
 		this.productCategory = productCategory;
 		this.productPrice = productPrice;
-		this.order = order;
-		this.cart = cart;
-		this.retailer = retailer;
+//		this.order = order;
+//		this.cart = cart;
+//		this.retailer = retailer;
 	}
 
 
@@ -124,29 +124,29 @@ public class Product {
 		this.productPrice = productPrice;
 	}
 
-	public Order getOrder() {
-		return order;
-	}
+//	public Order getOrder() {
+//		return order;
+//	}
+//
+//	public void setOrder(Order order) {
+//		this.order = order;
+//	}
+//
+//	public Cart getCart() {
+//		return cart;
+//	}
+//
+//	public void setCart(Cart cart) {
+//		this.cart = cart;
+//	}
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-
-	public Retailer getRetailer() {
-		return retailer;
-	}
-
-	public void setRetailer(Retailer retailer) {
-		this.retailer = retailer;
-	}
+//	public Retailer getRetailer() {
+//		return retailer;
+//	}
+//
+//	public void setRetailer(Retailer retailer) {
+//		this.retailer = retailer;
+//	}
 	
 	
 }
