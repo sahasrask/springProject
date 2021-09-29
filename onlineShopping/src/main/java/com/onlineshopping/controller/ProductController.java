@@ -23,9 +23,8 @@ public class ProductController {
 	@PostMapping(path="/addProduct")
 	public int add(@RequestBody ProductDto productDto) {
 		try {
-<<<<<<< HEAD
-			productService.addProduct(product);
-=======
+
+			
 			Product p=new Product();
 			p.setProductName(productDto.getProductName());
 			p.setProductQuantity(productDto.getProductQuantity());
@@ -34,8 +33,7 @@ public class ProductController {
 			p.setProductRating(productDto.getProductRating());
 			p.setProductCategory(productDto.getProductCategory());
 			
-			return productService.add(p);
->>>>>>> branch 'master' of https://github.com/sahasrask/springProject.git
+			return productService.addProduct(p);
 		}catch(Exception e) {
 			System.out.println("Error!");
 		}
@@ -45,7 +43,7 @@ public class ProductController {
 	@GetMapping(path="/viewAllProducts")
 	public List<Product> viewAllProducts(){
 		try {
-			return productService.viewAllProduct();
+			return productService.viewAllProducts();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

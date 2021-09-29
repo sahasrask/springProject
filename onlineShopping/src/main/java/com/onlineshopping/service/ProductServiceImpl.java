@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> viewAllProduct() {
+	public List<Product> viewAllProducts() {
 		return productRepo.viewAllProducts();
 	}
 
