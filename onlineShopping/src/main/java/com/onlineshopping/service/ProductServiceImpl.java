@@ -15,23 +15,23 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepo;
 	
 	@Override
-	public int add(Product product) {
-		int id=productRepo.save(product);
+	public int addProduct(Product product) {
+		int id=productRepo.saveProduct(product);
 		return id;
 	}
 
 	@Override
-	public Product get(int productId) {
+	public Product getProductById(int productId) {
 		return productRepo.findProductById(productId);
 	}
 
 	@Override
-	public void update(Product product) {
-		productRepo.save(product);
+	public void updateProduct(Product product) {
+		productRepo.saveProduct(product);
 	}
 
 	@Override
-	public int remove(int productId) {
+	public int removeProduct(int productId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
