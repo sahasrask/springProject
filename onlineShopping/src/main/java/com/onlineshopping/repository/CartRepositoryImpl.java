@@ -7,8 +7,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Repository;
+
 import com.onlineshopping.entity.Cart;
 
+@Repository
 public class CartRepositoryImpl implements CartRepository{
 	
 	@PersistenceContext
@@ -16,8 +19,8 @@ public class CartRepositoryImpl implements CartRepository{
 	
 	@Transactional
 	public Cart addProductToCart(Cart cart) {
-		Cart persistedPerson=em.merge(cart);
-		return null;
+		Cart c=em.merge(cart);
+		return c;
 	}
 
 
