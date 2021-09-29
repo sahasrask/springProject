@@ -16,18 +16,18 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public int addProduct(Product product) {
-		int id=productRepo.save(product);
+		int id=productRepo.saveProduct(product);
 		return id;
 	}
 
 	@Override
-	public Product getProduct(int productId) {
+	public Product getProductById(int productId) {
 		return productRepo.findProductById(productId);
 	}
 
 	@Override
 	public void updateProduct(Product product) {
-		productRepo.save(product);
+		productRepo.saveProduct(product);
 	}
 
 	@Override
@@ -40,5 +40,4 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> viewAllProducts() {
 		return productRepo.viewAllProducts();
 	}
-
 }

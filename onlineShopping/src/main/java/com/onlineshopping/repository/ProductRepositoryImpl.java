@@ -18,7 +18,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	
 	@Override
 	@Transactional
-	public int save(Product product) {
+	public int saveProduct(Product product) {
 		Product p=em.merge(product);		
 		return p.getProductId();
 	}

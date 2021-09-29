@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.onlineshopping.entity.Product;
 
 public interface ProductRepository {
-	int save(Product product);
+	int saveProduct(Product product);
 	Product findProductById(int productId);
 	List<Product> viewAllProducts();
 	List<Product> viewProductsByCategory(String productCategory);

@@ -57,10 +57,11 @@ public class ProductController {
 	@GetMapping(path="/displayProduct")
 	public Product displayProduct(@RequestParam("productId") int id, HttpServletRequest request){
 		try {
-			return productService.getProduct(id);
+			return productService.getProductById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
 }
