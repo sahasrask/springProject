@@ -1,5 +1,6 @@
 package com.onlineshopping.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,9 +33,9 @@ public class Product {
 //	@JoinColumn(name="orderId")
 //	Order order;	
 //	
-//	@ManyToOne
-//	@JoinColumn(name="cartId")
-//	Cart cart;
+	@OneToOne(mappedBy = "product",cascade = CascadeType.ALL)
+	@JoinColumn
+	CartItems cartItems;
 //	
 	
 //	@ManyToOne
@@ -124,6 +126,14 @@ public class Product {
 		this.productPrice = productPrice;
 	}
 
+	public CartItems getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(CartItems cartItems) {
+		this.cartItems = cartItems;
+	}
+
 //	public Order getOrder() {
 //		return order;
 //	}
@@ -132,14 +142,7 @@ public class Product {
 //		this.order = order;
 //	}
 //
-//	public Cart getCart() {
-//		return cart;
-//	}
-//
-//	public void setCart(Cart cart) {
-//		this.cart = cart;
-//	}
-
+	
 //	public Retailer getRetailer() {
 //		return retailer;
 //	}

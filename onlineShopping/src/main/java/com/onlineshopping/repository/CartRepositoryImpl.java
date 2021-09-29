@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshopping.entity.Cart;
+import com.onlineshopping.entity.User;
 
 @Repository
 public class CartRepositoryImpl implements CartRepository{
@@ -17,17 +18,7 @@ public class CartRepositoryImpl implements CartRepository{
 	@PersistenceContext
 	EntityManager em;
 	
-	@Transactional
-	public Cart addProductToCart(Cart cart) {
-		Cart c=em.merge(cart);
-		return c;
-	}
-
-	@Transactional
-	public void deleteProductsFromCart(int cartId) {
-		
-		em.remove(em.find(Cart.class, cartId));
-	}
+	
 
 //	public List<Product> checkOut(List<Product> products) {
 //		// TODO Auto-generated method stub
@@ -39,6 +30,24 @@ public class CartRepositoryImpl implements CartRepository{
 		Query query= em.createQuery(jpql);
 		List<Cart> users= query.getResultList();
 		return users;
+	}
+
+
+
+	@Override
+	public Cart addCartForaUser() {
+		Cart cart =new Cart();
+		cart.setCartQuantity(0);
+		cart.setCartTotalAmount(0);
+		return cart;
+	}
+
+
+
+	@Override
+	public Cart getCartById(int cartId) {
+		// TODO Auto-generated method stub
+		return em.find(Cart.class,cartId);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.onlineshopping.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,14 +21,12 @@ public class Cart {
 	int cartId;
 	int cartQuantity;
 	int cartTotalAmount;
-	
+//	List<Integer> productIds;
 	@OneToOne   
-	@JoinColumn(name="userId")
 	User user;
 	
-//	@OneToMany
-//	@JoinColumn(name="productId")
-//	List<Product> products;
+	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
+	List<CartItems> cartItems;
 		
 	public Cart() {
 		super();
@@ -74,6 +73,22 @@ public class Cart {
 		this.user = user;
 	}
 
+	public List<CartItems> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItems> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+//	public List<Integer> getProductIds() {
+//		return productIds;
+//	}
+//
+//	public void setProductIds(List<Integer> productIds) {
+//		this.productIds = productIds;
+//	}
+	
 //	public List<Product> getProducts() {
 //		return products;
 //	}
@@ -81,5 +96,6 @@ public class Cart {
 //	public void setProducts(List<Product> products) {
 //		this.products = products;
 //	}	
+//	
 	
 }
