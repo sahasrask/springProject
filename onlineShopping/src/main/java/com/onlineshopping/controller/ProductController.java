@@ -1,7 +1,10 @@
 package com.onlineshopping.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +36,15 @@ public class ProductController {
 			System.out.println("Error!");
 		}
 		return -1;
+	}
+	
+	@GetMapping(path="/viewAllProducts")
+	public List<Product> viewAllProducts(){
+		try {
+			return productService.viewAllProduct();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
