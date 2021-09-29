@@ -19,7 +19,7 @@ public class ProductController {
 	@PostMapping(path="/addProduct")
 	public void add(@RequestBody Product product) {
 		try {
-			productService.add(product);
+			productService.addProduct(product);
 		}catch(Exception e) {
 			System.out.println("Error!");
 		}
