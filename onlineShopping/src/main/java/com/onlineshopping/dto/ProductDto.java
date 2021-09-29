@@ -15,6 +15,7 @@ public class ProductDto {
 	String productCategory;
 	double productPrice;
 	
+	
 	public String getProductName() {
 		return productName;
 	}
