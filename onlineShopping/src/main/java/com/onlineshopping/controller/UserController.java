@@ -2,15 +2,17 @@ package com.onlineshopping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlineshopping.dto.LoginDto;
 import com.onlineshopping.dto.UserDto;
 import com.onlineshopping.entity.User;
 import com.onlineshopping.service.UserService;
-
+@CrossOrigin("*")
 @RestController
 public class UserController {
 	@Autowired
@@ -35,7 +37,7 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public boolean login(@RequestBody UserDto user) {
+	public User login(@RequestBody LoginDto user) {
 		return userService.loginUser(user.getEmail(), user.getPassword());
 	}
 
