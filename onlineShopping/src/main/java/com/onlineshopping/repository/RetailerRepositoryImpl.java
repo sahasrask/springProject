@@ -2,23 +2,48 @@ package com.onlineshopping.repository;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.onlineshopping.entity.Product;
+import com.onlineshopping.entity.Retailer;
 
-public class RetailerRepositoryImpl implements RetailerRepository {
+@Repository
+public class RetailerRepositoryImpl implements RetailerRepository
+{
+	
+	@PersistenceContext
+	EntityManager em;
 
 	@Override
-	public List<Product> addProducts(List<Product> products) {
-		return null;
+	@Transactional
+	public void addProducts(Product product) {
+		em.merge(product);
 	}
 
 	@Override
-	public List<Product> stageProducts(List<Product> products) {
-		return null;
+	@Transactional
+	public void deleteProduct(int productId) {
+		Product p=em.find(Product.class, productId);
+		em.remove(p);
 	}
 
 	@Override
-	public Product updateProduct(Product product) {
-		return null;
+	@Transactional
+	public void addRetailer(Retailer retailer) {
+		// TODO Auto-generated method stub
+		em.merge(retailer);
+		
+	}
+
+	@Override
+	public Retailer getRetailerById(int retailerId) {
+		Retailer r=em.find(Retailer.class, retailerId);
+		return r;
+		
 	}
 
 }

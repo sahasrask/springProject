@@ -24,11 +24,8 @@ public class Admin {
 	String adminPassword;
 	
 	
-	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-	List<Product> product;
-	
-	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-	List<User> user;
+	@OneToMany
+	List<Retailer> retailer;
 	
 
 	public Admin() {

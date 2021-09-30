@@ -31,22 +31,15 @@ public class Product {
 	double productPrice;
 	
 
-//	@ManyToOne
-//	@JoinColumn(name="orderId")
-//	Order order;	
-//	
 	@OneToOne(mappedBy = "product",cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn
 	CartItems cartItems;
 	
-	@ManyToOne
-	Admin admin;
-//	
 	
-//	@ManyToOne
-//	@JoinColumn(name="retailerId")
-//	Retailer retailer;
+	@ManyToOne
+	@JoinColumn(name="retailerId")
+	Retailer retailer;
 		
 	public Product() {}
 
@@ -138,6 +131,14 @@ public class Product {
 
 	public void setCartItems(CartItems cartItems) {
 		this.cartItems = cartItems;
+	}
+
+	public Retailer getRetailer() {
+		return retailer;
+	}
+
+	public void setRetailer(Retailer retailer) {
+		this.retailer = retailer;
 	}
 
 //	public Order getOrder() {
