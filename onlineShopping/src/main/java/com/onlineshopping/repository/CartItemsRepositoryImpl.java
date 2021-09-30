@@ -18,8 +18,7 @@ public class CartItemsRepositoryImpl implements CartItemsRepository {
 	
 	@Override
 	public List<CartItems> getAllCartItems(int cartId) {
-		// TODO Auto-generated method stub
-		String jpql="select c from CartItems c where cartId=:cid";
+		String jpql="select c from CartItems c where c.cart.cartId=:cid";
 		Query query= em.createQuery(jpql);
 		query.setParameter("cid", cartId);
 		List<CartItems> items= query.getResultList();
@@ -28,24 +27,30 @@ public class CartItemsRepositoryImpl implements CartItemsRepository {
 
 	@Override
 	public long getCartTotal(int cartId) {
-		String jpql="select sum(c.product.productPrice) from CartItems c where cartId=:cid";
+		String jpql="select sum(c.product.productPrice) from CartItems c where c.cart.cartId=:cid";
 		Query query= em.createQuery(jpql);
 		query.setParameter("cid", cartId);
 		long total= (long) query.getSingleResult();
 		return total;
 	}
+
 	@Transactional
 	@Override
 	public CartItems addCartItem(CartItems cartItem) {
-		// TODO Auto-generated method stub
 		return em.merge(cartItem);
 	}
+
 	@Transactional
 	@Override
 	public void removeCartItem(CartItems cartItem) {
-		// TODO Auto-generated method stub
 		em.remove(cartItem);
+	}
 
+	@Override
+	public void emptyCart(int cartId) {
+		String jpql="delete from CartItems c where c.cart.cartId=:cid";
+		Query query= em.createQuery(jpql);
+		query.setParameter("cid", cartId);
 	}
 
 }

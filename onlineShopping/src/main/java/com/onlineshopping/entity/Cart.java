@@ -59,7 +59,7 @@ public class Cart implements Serializable{
 	}
 
 	public int getCartQuantity() {
-		return cartQuantity;
+		return this.cartQuantity;
 	}
 
 	public void setCartQuantity(int cartQuantity) {
@@ -67,7 +67,7 @@ public class Cart implements Serializable{
 	}
 
 	public double getCartTotalAmount() {
-		return cartTotalAmount;
+		return this.cartTotalAmount;
 	}
 
 	public void setCartTotalAmount(double cartTotalAmount) {
@@ -75,7 +75,7 @@ public class Cart implements Serializable{
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
@@ -83,28 +83,12 @@ public class Cart implements Serializable{
 	}
 
 	public List<CartItems> getCartItems() {
-		return cartItems;
+		return this.cartItems;
 	}
 
 	public void setCartItems(List<CartItems> cartItems) {
 		this.cartItems = cartItems;
 	}
 
-//	public List<Integer> getProductIds() {
-//		return productIds;
-//	}
-//
-//	public void setProductIds(List<Integer> productIds) {
-//		this.productIds = productIds;
-//	}
-	
-//	public List<Product> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
-//	}	
-//	
 	
 }

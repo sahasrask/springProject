@@ -17,6 +17,7 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	@PersistenceContext
 	EntityManager em;
+	
 	@Override
 	@Transactional
 	public User registerUser(User user) {
@@ -28,13 +29,14 @@ public class UserRepositoryImpl implements UserRepository {
 	@Transactional
 	public User loginUser(String email, String password){
 		
-		String jpql="select count(u) from User u where u.email=:em and u.password=:pwd";
+		String jpql="select u from User u where u.email=:em and u.password=:pwd";
 		Query query=em.createQuery(jpql);
 		query.setParameter("em", email);
 		query.setParameter("pwd", password);
-		Long count=(Long)query.getSingleResult();
-		User u =em.find(User.class, email);
-		return count>0? u:null;
+		User u;
+		u= (User) query.getSingleResult();
+		//User u =em.find(User.class, email);
+		return u;
 	}
 
 	@Override

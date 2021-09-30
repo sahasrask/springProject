@@ -12,6 +12,6 @@ public interface CartRepository {
 	Cart getCartById(int cartId);
 	Cart incrementCartQuantity(int cartId);
 	Cart incrementCartTotalAmount(int cartId,double amount);
-	
+	int getCartIdByUserId(int userId);
 }
  	 	

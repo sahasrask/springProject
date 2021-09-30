@@ -20,7 +20,7 @@ import com.onlineshopping.service.CartService;
 import com.onlineshopping.service.ProductService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class CartController {
 	@Autowired
 	CartService cartService;
@@ -33,11 +33,17 @@ public class CartController {
 	{
 		return cartService.addCartForaUser();
 	}
+	
+	
+	@GetMapping("/getCartId")
+	public int getCartIdByUserId(@RequestParam("userId") int userid, HttpServletRequest request) {		
+		return cartService.getCardIdByUserId(userid);
+	}
+	
 
 	@GetMapping("/viewAllProductsInCart")
-	public List<Cart> viewAllProductsInCart(@RequestBody CartDto cartDto,HttpServletRequest request) {
+	public List<Cart> viewAllProductsInCart(@RequestParam("cartId") int cartid,HttpServletRequest request) {
 		List<Cart> c= cartService.viewAllProductsInCart();
 		return c;
-
 	}
 }
