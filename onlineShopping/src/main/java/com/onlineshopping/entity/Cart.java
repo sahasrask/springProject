@@ -1,5 +1,6 @@
 package com.onlineshopping.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,24 +14,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.engine.jdbc.SerializableBlobProxy;
+import org.hibernate.type.SerializableType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Cart {
+public class Cart implements Serializable{
 	
 	@Id
 	@SequenceGenerator(name="cart_seq",initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cart_seq")
 	int cartId;
 	int cartQuantity;
-	int cartTotalAmount;
+	double cartTotalAmount;
 //	List<Integer> productIds;
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	User user;
 	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
+	@JsonIgnore
 	List<CartItems> cartItems;
 		
 	public Cart() {
-		super();
+		
 	}
 
 	public Cart(int cartId, int cartQuantity, int cartTotalAmount, User user//, List<Product> products
@@ -39,8 +46,9 @@ public class Cart {
 		this.cartQuantity = cartQuantity;
 		this.cartTotalAmount = cartTotalAmount;
 		this.user = user;
-//		this.products = products;
+		//this.products = products;
 	}
+
 
 	public int getCartId() {
 		return cartId;
@@ -58,11 +66,11 @@ public class Cart {
 		this.cartQuantity = cartQuantity;
 	}
 
-	public int getCartTotalAmount() {
+	public double getCartTotalAmount() {
 		return cartTotalAmount;
 	}
 
-	public void setCartTotalAmount(int cartTotalAmount) {
+	public void setCartTotalAmount(double cartTotalAmount) {
 		this.cartTotalAmount = cartTotalAmount;
 	}
 

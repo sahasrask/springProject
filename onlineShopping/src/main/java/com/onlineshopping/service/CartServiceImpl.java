@@ -31,6 +31,16 @@ public class CartServiceImpl implements CartService {
 		// TODO Auto-generated method stub
 		return repository.getCartById(cartId);
 	}
+	@Override
+	public Cart incrementCartQuantity(int cartId) {
+		// TODO Auto-generated method stub
+		return repository.incrementCartQuantity(cartId);
+	}
+	@Override
+	public Cart incrementCartTotalAmount(int cartId, double amount) {
+		// TODO Auto-generated method stub
+		return repository.incrementCartTotalAmount(cartId, amount);
+	}
 	
 	
 }

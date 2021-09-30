@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @NamedQuery(name="fetch-all", query="select p from Product p")
 public class Product {
@@ -34,6 +36,7 @@ public class Product {
 //	Order order;	
 //	
 	@OneToOne(mappedBy = "product",cascade = CascadeType.ALL)
+	@JsonIgnore
 	@JoinColumn
 	CartItems cartItems;
 //	

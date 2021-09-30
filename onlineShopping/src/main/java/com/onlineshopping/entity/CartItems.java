@@ -1,5 +1,7 @@
 package com.onlineshopping.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class CartItems {
+public class CartItems implements Serializable {
 @Id
 @SequenceGenerator(name="cart_items_seq",initialValue = 1,allocationSize = 1)
 @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cart_items_seq")
@@ -21,6 +25,7 @@ int quantity;
 @JoinColumn(name="productId")
 Product product;
 @ManyToOne
+@JsonIgnore
 @JoinColumn(name="cartId")
 Cart cart;
 public int getCartItemId() {

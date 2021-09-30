@@ -8,5 +8,8 @@ public interface CartService {
 	List<Cart> viewAllProductsInCart();
 	Cart addCartForaUser();
 	Cart getCartById(int cartId);
+	Cart incrementCartQuantity(int cartId);
+	Cart incrementCartTotalAmount(int cartId,double amount);
+	
 
 }

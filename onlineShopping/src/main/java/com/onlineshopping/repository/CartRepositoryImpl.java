@@ -50,4 +50,24 @@ public class CartRepositoryImpl implements CartRepository{
 		return em.find(Cart.class,cartId);
 	}
 
+
+
+	@Override
+	public Cart incrementCartQuantity(int cartId) {
+		// TODO Auto-generated method stub
+		Cart c = em.find(Cart.class, cartId);
+		c.setCartQuantity(c.getCartQuantity()+1);
+		return null;
+	}
+
+
+
+	@Override
+	public Cart incrementCartTotalAmount(int cartId,double amount) {
+		// TODO Auto-generated method stub
+		Cart c = em.find(Cart.class, cartId);
+		c.setCartTotalAmount(c.getCartTotalAmount()+amount);
+		return null;
+	}
+
 }

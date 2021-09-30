@@ -28,9 +28,13 @@ CartService cartService;
 public CartItems addCartItem(@RequestBody CartItemsDto dto) {
 	try {
 		 CartItems item= new CartItems();
-		 item.setProduct(productService.getProductById(dto.getProductId()));
+		 Product p = new Product();
+		 p=productService.getProductById(dto.getProductId());
+		 item.setProduct(p);
 		 item.setQuantity(dto.getQuantity());
 		 item.setCart(cartService.getCartById(dto.getCartId()));
+		 cartService.incrementCartQuantity(dto.getCartId());
+		 cartService.incrementCartTotalAmount(dto.getCartId(),item.getQuantity()*p.getProductPrice());
 		 return cartItemsService.addCartItem(item);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
