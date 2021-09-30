@@ -20,26 +20,36 @@ public class CartServiceImpl implements CartService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Transactional
 	@Override
 	public Cart addCartForaUser() {
 		// TODO Auto-generated method stub
 		return repository.addCartForaUser();
 	}
+	
 	@Override
 	public Cart getCartById(int cartId) {
 		// TODO Auto-generated method stub
 		return repository.getCartById(cartId);
 	}
+	
 	@Override
 	public Cart incrementCartQuantity(int cartId) {
 		// TODO Auto-generated method stub
 		return repository.incrementCartQuantity(cartId);
 	}
+	
 	@Override
 	public Cart incrementCartTotalAmount(int cartId, double amount) {
 		// TODO Auto-generated method stub
 		return repository.incrementCartTotalAmount(cartId, amount);
+	}
+	
+	@Transactional
+	@Override
+	public int getCardIdByUserId(int userId) {
+		return repository.getCartIdByUserId(userId);
 	}
 	
 	

@@ -8,6 +8,6 @@ public interface CartItemsService {
 	List<CartItems> getAllCartItems(int cartId);
 	long getCartTotal(int cartId);
 	CartItems addCartItem(CartItems cartItem);
-	void removeCartItem(CartItems cartItem);
-
+	void removeCartItem(int cartItemId);
+	void emptyCart(int cartId);
 }

@@ -15,14 +15,12 @@ public class UserServiceImpl implements UserService {
 	UserRepository repository;
 	
 	@Override
-	public User registerUser(User user) {
-		
+	public User registerUser(User user) {		
 		return repository.registerUser(user);
 	}
 
 	@Override
 	public User loginUser(String email, String password) {
-		
 		return repository.loginUser(email, password);
 	}
 

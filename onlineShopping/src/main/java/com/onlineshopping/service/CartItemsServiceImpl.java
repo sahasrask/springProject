@@ -13,27 +13,27 @@ public class CartItemsServiceImpl implements CartItemsService {
 	private CartItemsRepository repository;
 	@Override
 	public List<CartItems> getAllCartItems(int cartId) {
-		// TODO Auto-generated method stub
 		return repository.getAllCartItems(cartId);
 	}
 
 	@Override
 	public long getCartTotal(int cartId) {
-		// TODO Auto-generated method stub
 		return repository.getCartTotal(cartId);
 	}
 
 	@Override
 	public CartItems addCartItem(CartItems cartItem) {
-		// TODO Auto-generated method stub
 		return repository.addCartItem(cartItem);
 	}
 
 	@Override
-	public void removeCartItem(CartItems cartItem) {
-		// TODO Auto-generated method stub
-		repository.removeCartItem(cartItem);
-		
+	public void removeCartItem(int cartItemId) {
+		repository.removeCartItem(cartItemId);		
+	}
+
+	@Override
+	public void emptyCart(int cartId) {
+		repository.emptyCart(cartId);		
 	}
 
 }
