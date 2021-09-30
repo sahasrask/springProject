@@ -39,6 +39,9 @@ public class Product {
 	@JsonIgnore
 	@JoinColumn
 	CartItems cartItems;
+	
+	@ManyToOne
+	Admin admin;
 //	
 	
 //	@ManyToOne

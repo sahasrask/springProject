@@ -2,6 +2,7 @@ package com.onlineshopping.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +23,15 @@ public class Admin {
 	String adminEmail;
 	String adminPassword;
 	
+	
+	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
+	List<Product> product;
+	
+	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
+	List<User> user;
+	
+
 	public Admin() {
-		super();
 	}
 	public Admin(int adminId, String adminFirstName, String adminLastName, String adminMobileNumber, String adminEmail,
 			String adminPassword) {
