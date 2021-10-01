@@ -28,6 +28,10 @@ Product product;
 @JsonIgnore
 @JoinColumn(name="cartId")
 Cart cart;
+
+@OneToOne
+OrderItems orderItem;
+
 public int getCartItemId() {
 	return cartItemId;
 }
@@ -52,6 +56,13 @@ public Cart getCart() {
 public void setCart(Cart cart) {
 	this.cart = cart;
 }
+public OrderItems getOrderItem() {
+	return orderItem;
+}
+public void setOrderItem(OrderItems orderItem) {
+	this.orderItem = orderItem;
+}
+
 
 
 }

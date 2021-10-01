@@ -22,7 +22,8 @@ public class Order {
 	int orderId;
 	double totalOrderAmount;
 	OrderStatus orderStatus;
-//	List<int> productId;
+
+
 	
 //	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
 //	List<Product> products;
@@ -31,25 +32,28 @@ public class Order {
 	@JoinColumn(name="userId")
 	User user;
 	
-	@OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
-	Payment payment;	
+	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+	List<OrderItems> orderItems;
+
 	
 	
 	public Order() {
 		super();
 	}
 
-	public Order(int orderId, double totalOrderAmount, OrderStatus orderStatus,// List<Product> products,
-			User user,
-			Payment paymentDetails) {
+	
+
+	public Order(int orderId, double totalOrderAmount, OrderStatus orderStatus, User user,
+			List<OrderItems> orderItems) {
 		super();
 		this.orderId = orderId;
 		this.totalOrderAmount = totalOrderAmount;
 		this.orderStatus = orderStatus;
-//		this.products = products;
 		this.user = user;
-		this.payment = paymentDetails;
+		this.orderItems = orderItems;
 	}
+
+
 
 	public int getOrderId() {
 		return orderId;
@@ -91,12 +95,17 @@ public class Order {
 		this.user = user;
 	}
 
-	public Payment getPaymentDetails() {
-		return payment;
+
+
+	public List<OrderItems> getOrderItems() {
+		return orderItems;
 	}
 
-	public void setPaymentDetails(Payment paymentDetails) {
-		this.payment = paymentDetails;
+
+
+	public void setOrderItems(List<OrderItems> orderItems) {
+		this.orderItems = orderItems;
 	}
+
 	
 }

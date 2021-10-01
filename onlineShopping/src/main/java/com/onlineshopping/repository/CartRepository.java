@@ -7,7 +7,6 @@ import com.onlineshopping.entity.Product;
 
 public interface CartRepository {
 	List<Cart> viewAllProductsInCart();
-
 	Cart addCartForaUser();
 	Cart getCartById(int cartId);
 	Cart incrementCartQuantity(int cartId);

@@ -1,13 +1,11 @@
-package com.onlineshopping.repository;
-
-import java.util.List;
+package com.onlineshopping.service;
 
 import com.onlineshopping.entity.Order;
-import com.onlineshopping.entity.User;
 
-public interface OrderRepository {
+public interface OrderService {
 	Order createOrder();
 	void cancelOrder(Order order);
 	Order repeatOrder(Order order);
 	Order viewOrderDetails(int orderId);
+
 }

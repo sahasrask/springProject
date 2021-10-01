@@ -40,6 +40,7 @@ public CartItems addCartItem(@RequestBody CartItemsDto dto) {
 		 Product p = new Product();
 		 p=productService.getProductById(dto.getProductId());
 		 item.setProduct(p);
+		 System.out.println("product issss"+p);
 		 item.setQuantity(dto.getQuantity());
 		 item.setCart(cartService.getCartById(dto.getCartId()));
 		 cartService.incrementCartQuantity(dto.getCartId());
