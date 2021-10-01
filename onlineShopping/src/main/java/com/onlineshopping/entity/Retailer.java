@@ -10,11 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 @Entity
-public class Retailer {
-	
+public class Retailer 
+{
 	@Id
 	@SequenceGenerator(name="ret_seq",initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "ret_seq")
@@ -22,10 +21,11 @@ public class Retailer {
 	String retailerName;
 	String retailerEmail;
 	String retailerPassword;
+	public boolean adminApproval=false; 
 	
 	
-//	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
-//	List<Product> product;
+	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
+	List<Product> product;
 	
 	@ManyToOne
 	Admin admin;
@@ -35,17 +35,20 @@ public class Retailer {
 		super();
 	}
 
-
-	public Retailer(int retailerId, String retailerName, String retailerEmail, String retailerPassword
-//			List<Product> product
-			) {
+	
+	public Retailer(int retailerId, String retailerName, String retailerEmail, String retailerPassword,
+			boolean adminApproval, List<Product> product, Admin admin) {
 		super();
 		this.retailerId = retailerId;
 		this.retailerName = retailerName;
 		this.retailerEmail = retailerEmail;
 		this.retailerPassword = retailerPassword;
-		//this.product = product;
+		this.adminApproval = adminApproval;
+		this.product = product;
+		this.admin = admin;
 	}
+
+
 
 
 	public int getRetailerId() {
@@ -88,14 +91,34 @@ public class Retailer {
 	}
 
 
-//	public List<Product> getProduct() {
-//		return product;
-//	}
-//
-//
-//	public void setProduct(List<Product> product) {
-//		this.product = product;
-//	}
+	public List<Product> getProduct() {
+		return product;
+	}
+
+
+	public void setProduct(List<Product> product) {
+	this.product = product;
+	}
+
+
+	public boolean isAdminApproval() {
+		return adminApproval;
+	}
+
+
+	public void setAdminApproval(boolean adminApproval) {
+		this.adminApproval = adminApproval;
+	}
+
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 	
 	
 	
