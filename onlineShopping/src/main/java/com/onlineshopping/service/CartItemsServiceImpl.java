@@ -2,6 +2,8 @@ package com.onlineshopping.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import com.onlineshopping.repository.CartItemsRepository;
 public class CartItemsServiceImpl implements CartItemsService {
 	@Autowired
 	private CartItemsRepository repository;
+
 	@Override
 	public List<CartItems> getAllCartItems(int cartId) {
 		return repository.getAllCartItems(cartId);

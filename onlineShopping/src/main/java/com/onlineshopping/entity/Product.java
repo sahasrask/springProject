@@ -35,7 +35,7 @@ public class Product {
 //	@JoinColumn(name="orderId")
 //	Order order;	
 //	
-	@OneToOne(mappedBy = "product",cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "product")
 	@JsonIgnore
 	@JoinColumn
 	CartItems cartItems;

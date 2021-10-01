@@ -40,17 +40,20 @@ public class CartItemsRepositoryImpl implements CartItemsRepository {
 		return em.merge(cartItem);
 	}
 
-	@Transactional
 	@Override
-	public void removeCartItem(CartItems cartItem) {
-		em.remove(cartItem);
+	@Transactional
+	public void removeCartItem(int cartItemId) {
+		CartItems c=em.find(CartItems.class, cartItemId);
+		em.remove(c);
 	}
 
 	@Override
+	@Transactional
 	public void emptyCart(int cartId) {
 		String jpql="delete from CartItems c where c.cart.cartId=:cid";
 		Query query= em.createQuery(jpql);
 		query.setParameter("cid", cartId);
+		// add execute statement
 	}
 
 }

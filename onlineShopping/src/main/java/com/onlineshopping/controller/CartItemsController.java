@@ -65,8 +65,8 @@ public void emptyCart(@RequestParam("cartId") int cartid,HttpServletRequest requ
 }
 
 @PostMapping("/removeCartItem")
-public void emptyCart(@RequestParam("cartItemId") int cartItemid,HttpServletRequest request) {
-	cartItemsService.removeCartItem(null);		
+public void removeCartItem(@RequestParam("cartItemId") int cartItemId,HttpServletRequest request) {
+	cartItemsService.removeCartItem(cartItemId);		
 }
 
 
