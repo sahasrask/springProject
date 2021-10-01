@@ -12,8 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name ="tbl_orders")
 public class Order {
 	
 	@Id
@@ -22,9 +24,6 @@ public class Order {
 	int orderId;
 	double totalOrderAmount;
 	OrderStatus orderStatus;
-
-
-	
 //	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
 //	List<Product> products;
 	
@@ -35,7 +34,8 @@ public class Order {
 	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
 	List<OrderItems> orderItems;
 
-	
+//	@OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
+//	Cart cart;
 	
 	public Order() {
 		super();
@@ -106,6 +106,18 @@ public class Order {
 	public void setOrderItems(List<OrderItems> orderItems) {
 		this.orderItems = orderItems;
 	}
+
+
+//
+//	public Cart getCart() {
+//		return cart;
+//	}
+//
+//
+//
+//	public void setCart(Cart cart) {
+//		this.cart = cart;
+//	}
 
 	
 }

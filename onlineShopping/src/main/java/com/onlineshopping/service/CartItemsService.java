@@ -2,6 +2,7 @@ package com.onlineshopping.service;
 
 import java.util.List;
 
+import com.onlineshopping.entity.Cart;
 import com.onlineshopping.entity.CartItems;
 
 public interface CartItemsService {
@@ -10,4 +11,6 @@ public interface CartItemsService {
 	CartItems addCartItem(CartItems cartItem);
 	void removeCartItem(int cartItemId);
 	void emptyCart(int cartId);
+	int getThisCart(int cartItemId);
+	CartItems getCartItemById(int cartItemId);
 }

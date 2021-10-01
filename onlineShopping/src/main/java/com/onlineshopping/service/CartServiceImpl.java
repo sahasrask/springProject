@@ -51,6 +51,19 @@ public class CartServiceImpl implements CartService {
 	public int getCardIdByUserId(int userId) {
 		return repository.getCartIdByUserId(userId);
 	}
+
+	@Override
+	public Cart updateCart(Cart c) {
+		// TODO Auto-generated method stub
+		return repository.updateCart(c);
+	}
+
+	@Override
+	public void emptyCart(int cartId) {
+		// TODO Auto-generated method stub
+		repository.emptyCart(cartId);
+		
+	}
 	
 	
 }

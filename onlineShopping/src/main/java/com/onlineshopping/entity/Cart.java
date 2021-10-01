@@ -29,12 +29,17 @@ public class Cart implements Serializable{
 	int cartQuantity;
 	double cartTotalAmount;
 //	List<Integer> productIds;
+	
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	User user;
+	
 	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
 	@JsonIgnore
 	List<CartItems> cartItems;
+	
+//	@OneToOne
+//	Order order;
 		
 	public Cart() {
 		
@@ -89,6 +94,14 @@ public class Cart implements Serializable{
 	public void setCartItems(List<CartItems> cartItems) {
 		this.cartItems = cartItems;
 	}
+//
+//	public Order getOrder() {
+//		return order;
+//	}
+//
+//	public void setOrder(Order order) {
+//		this.order = order;
+//	}
 
 	
 }

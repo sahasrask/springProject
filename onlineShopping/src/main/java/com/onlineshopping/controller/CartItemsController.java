@@ -40,7 +40,7 @@ public CartItems addCartItem(@RequestBody CartItemsDto dto) {
 		 Product p = new Product();
 		 p=productService.getProductById(dto.getProductId());
 		 item.setProduct(p);
-		 System.out.println("product issss"+p);
+		 //System.out.println("product issss"+p);
 		 item.setQuantity(dto.getQuantity());
 		 item.setCart(cartService.getCartById(dto.getCartId()));
 		 cartService.incrementCartQuantity(dto.getCartId());
@@ -62,12 +62,33 @@ public List<CartItems> viewAllProductsInCart(@RequestParam("cartId") int cartid,
 
 @PostMapping("/emptyCart")
 public void emptyCart(@RequestParam("cartId") int cartid,HttpServletRequest request) {
-	cartItemsService.emptyCart(cartid);		
+	cartItemsService.emptyCart(cartid);
+	cartService.emptyCart(cartid);
+	
+	
 }
 
 @PostMapping("/removeCartItem")
 public void removeCartItem(@RequestParam("cartItemId") int cartItemId,HttpServletRequest request) {
-	cartItemsService.removeCartItem(cartItemId);		
+	
+	try {
+		int cid=cartItemsService.getThisCart(cartItemId);
+		//System.out.println("Cart ID: "+cid);
+		Cart c=cartService.getCartById(cid);
+		//System.out.println("Cart: "+c);
+		c.setCartQuantity(c.getCartQuantity()-1);
+		c.setCartTotalAmount(c.getCartTotalAmount()-cartItemsService.getCartItemById(cartItemId).getProduct().getProductPrice()*(cartItemsService.getCartItemById(cartItemId)).getQuantity());
+		cartItemsService.removeCartItem(cartItemId);
+		cartService.updateCart(c);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+@PostMapping("/getThisCart")
+public int getThisCart(@RequestParam("cartItemId") int cartItemId,HttpServletRequest request) {
+	return cartItemsService.getThisCart(cartItemId);
 }
 
 

@@ -2,14 +2,18 @@ package com.onlineshopping.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class OrderItems {
@@ -21,9 +25,13 @@ public class OrderItems {
 	int orderQuantity;
 	
 	@OneToOne
-	CartItems cartItem;
+	@JoinColumn(name="productId")
+	Product product;
+//	@OneToOne(mappedBy = "orderItem",cascade = CascadeType.ALL)
+//	CartItems cartItem;
 	
 	@ManyToOne
+	@JsonIgnore
 	Order order;
 
 	public int getOrderItemId() {
@@ -35,14 +43,14 @@ public class OrderItems {
 	}
 
 	
-
-	public CartItems getCartItem() {
-		return cartItem;
-	}
-
-	public void setCartItem(CartItems cartItem) {
-		this.cartItem = cartItem;
-	}
+//
+//	public CartItems getCartItem() {
+//		return cartItem;
+//	}
+//
+//	public void setCartItem(CartItems cartItem) {
+//		this.cartItem = cartItem;
+//	}
 
 	public int getOrderQuantity() {
 		return orderQuantity;
@@ -58,6 +66,14 @@ public class OrderItems {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 	

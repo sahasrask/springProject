@@ -53,7 +53,22 @@ public class CartItemsRepositoryImpl implements CartItemsRepository {
 		String jpql="delete from CartItems c where c.cart.cartId=:cid";
 		Query query= em.createQuery(jpql);
 		query.setParameter("cid", cartId);
-		// add execute statement
+		query.executeUpdate();
+	}
+
+	@Override
+	public int getThisCart(int cartItemId) {
+		// TODO Auto-generated method stub
+		String jpql="select c.cart.cartId from CartItems c where cartItemId=:ciid";
+		Query query= em.createQuery(jpql);
+		query.setParameter("ciid", cartItemId);
+		return (int) query.getSingleResult();
+	}
+
+	@Override
+	public CartItems getCartItemById(int cartItemId) {
+		// TODO Auto-generated method stub
+		return em.find(CartItems.class, cartItemId);
 	}
 
 }

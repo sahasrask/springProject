@@ -11,4 +11,6 @@ public interface CartService {
 	Cart incrementCartQuantity(int cartId);
 	Cart incrementCartTotalAmount(int cartId,double amount);
 	int getCardIdByUserId(int userId);
+	Cart updateCart(Cart c);
+	void emptyCart(int cartId);
 }

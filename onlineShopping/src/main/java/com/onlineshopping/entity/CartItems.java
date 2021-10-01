@@ -2,6 +2,7 @@ package com.onlineshopping.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,8 +30,9 @@ Product product;
 @JoinColumn(name="cartId")
 Cart cart;
 
-@OneToOne
-OrderItems orderItem;
+//@OneToOne
+//@JsonIgnore
+//OrderItems orderItem;
 
 public int getCartItemId() {
 	return cartItemId;
@@ -56,12 +58,12 @@ public Cart getCart() {
 public void setCart(Cart cart) {
 	this.cart = cart;
 }
-public OrderItems getOrderItem() {
-	return orderItem;
-}
-public void setOrderItem(OrderItems orderItem) {
-	this.orderItem = orderItem;
-}
+//public OrderItems getOrderItem() {
+//	return orderItem;
+//}
+//public void setOrderItem(OrderItems orderItem) {
+//	this.orderItem = orderItem;
+//}
 
 
 

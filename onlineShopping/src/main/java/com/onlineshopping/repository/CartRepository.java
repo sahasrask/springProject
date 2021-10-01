@@ -12,5 +12,7 @@ public interface CartRepository {
 	Cart incrementCartQuantity(int cartId);
 	Cart incrementCartTotalAmount(int cartId,double amount);
 	int getCartIdByUserId(int userId);
+	Cart updateCart(Cart c);
+	void emptyCart(int cartId);
 }
  	 	
