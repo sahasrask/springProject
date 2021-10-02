@@ -42,7 +42,6 @@ public class CartItemsServiceImpl implements CartItemsService {
 
 	@Override
 	public int getThisCart(int cartItemId) {
-		// TODO Auto-generated method stub
 		return repository.getThisCart(cartItemId);
 	}
 

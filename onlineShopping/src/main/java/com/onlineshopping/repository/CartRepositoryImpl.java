@@ -19,6 +19,7 @@ public class CartRepositoryImpl implements CartRepository{
 	EntityManager em;
 
 	@Override
+	@Transactional
 	public List<Cart> viewAllProductsInCart() {
 		String jpql="select c from Cart c ";
 		Query query= em.createQuery(jpql);
@@ -28,6 +29,7 @@ public class CartRepositoryImpl implements CartRepository{
 
 
 	@Override
+	@Transactional
 	public Cart addCartForaUser() {
 		Cart cart =new Cart();
 		cart.setCartQuantity(0);
@@ -66,6 +68,7 @@ public class CartRepositoryImpl implements CartRepository{
 
 
 	@Override
+	@Transactional
 	public int getCartIdByUserId(int userId) {
 		String jpql="select c.cartId from Cart c where c.user.user_id=:id";
 		Query query= em.createQuery(jpql);
