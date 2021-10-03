@@ -24,7 +24,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 	public Order createOrder() {
 		Order order =new Order();
 		order.setTotalOrderAmount(0);
-		return order;
+		return em.merge(order);
 		
 		
 	}

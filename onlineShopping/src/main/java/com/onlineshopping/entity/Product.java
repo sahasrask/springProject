@@ -39,6 +39,11 @@ public class Product {
 	@JoinColumn
 	CartItems cartItems;
 	
+	@OneToOne(mappedBy = "product")
+	@JsonIgnore
+	@JoinColumn
+	OrderItems orderItems;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="retailerId")

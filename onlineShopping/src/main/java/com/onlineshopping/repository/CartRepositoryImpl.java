@@ -19,6 +19,7 @@ public class CartRepositoryImpl implements CartRepository{
 	EntityManager em;
 
 	@Override
+	@Transactional
 	public List<Cart> viewAllProductsInCart() {
 		String jpql="select c from Cart c ";
 		Query query= em.createQuery(jpql);
@@ -28,6 +29,7 @@ public class CartRepositoryImpl implements CartRepository{
 
 
 	@Override
+	@Transactional
 	public Cart addCartForaUser() {
 		Cart cart =new Cart();
 		cart.setCartQuantity(0);
@@ -38,6 +40,7 @@ public class CartRepositoryImpl implements CartRepository{
 
 
 	@Override
+	@Transactional
 	public Cart getCartById(int cartId) {
 		// TODO Auto-generated method stub
 		return em.find(Cart.class,cartId);
@@ -48,7 +51,7 @@ public class CartRepositoryImpl implements CartRepository{
 	@Transactional
 	public Cart incrementCartQuantity(int cartId) {
 		Cart c = em.find(Cart.class, cartId);
-		System.out.println("Cart=" +c);
+		//System.out.println("Cart=" +c);
 		c.setCartQuantity(c.getCartQuantity()+1);
 		return c;
 	}
@@ -65,12 +68,32 @@ public class CartRepositoryImpl implements CartRepository{
 
 
 	@Override
+	@Transactional
 	public int getCartIdByUserId(int userId) {
 		String jpql="select c.cartId from Cart c where c.user.user_id=:id";
 		Query query= em.createQuery(jpql);
 		query.setParameter("id", userId);
 		int cart_id=(int) query.getSingleResult();
 		return cart_id;
+	}
+
+
+	@Override
+	@Transactional
+	public Cart updateCart(Cart c) {
+		// TODO Auto-generated method stub
+		return em.merge(c);
+	}
+
+
+	@Override
+	@Transactional
+	public void emptyCart(int cartId) {
+		// TODO Auto-generated method stub
+		Cart c= em.find(Cart.class, cartId);
+		c.setCartQuantity(0);
+		c.setCartTotalAmount(0.0);
+		em.merge(c);
 	}
 
 

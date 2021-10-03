@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.onlineshopping.entity.Cart;
 import com.onlineshopping.entity.CartItems;
 import com.onlineshopping.repository.CartItemsRepository;
 @Service
@@ -37,6 +38,17 @@ public class CartItemsServiceImpl implements CartItemsService {
 	@Override
 	public void emptyCart(int cartId) {
 		repository.emptyCart(cartId);		
+	}
+
+	@Override
+	public int getThisCart(int cartItemId) {
+		return repository.getThisCart(cartItemId);
+	}
+
+	@Override
+	public CartItems getCartItemById(int cartItemId) {
+		// TODO Auto-generated method stub
+		return repository.getCartItemById(cartItemId);
 	}
 
 }
