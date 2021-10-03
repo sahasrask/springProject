@@ -15,8 +15,5 @@ public interface AdminRepository {
 	boolean approveRetailer(int retailerId);
 	
 	Retailer findRetailerById(int retailerId);
-	
-	
-	
-	
+
 }
