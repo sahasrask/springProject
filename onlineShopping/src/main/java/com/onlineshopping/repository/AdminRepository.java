@@ -17,4 +17,6 @@ public interface AdminRepository {
 	Retailer findRetailerById(int retailerId);
 	
 	
+	
+	
 }

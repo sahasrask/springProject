@@ -24,7 +24,7 @@ public class Admin {
 	String adminPassword;
 	
 	
-	@OneToMany
+	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
 	List<Retailer> retailer;
 	
 
