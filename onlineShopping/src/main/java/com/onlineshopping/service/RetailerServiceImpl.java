@@ -15,28 +15,29 @@ public class RetailerServiceImpl implements RetailerService{
 	RetailerRepository retailerRepo;
 
 	@Override
-	public void addProducts(Product product) {
-		
+	public void addProducts(Product product) {		
 		retailerRepo.addProducts(product);
 	}
 
 	@Override
 	public void deleteProduct(int productId) {
-		// TODO Auto-generated method stub
 		retailerRepo.deleteProduct(productId);
 		
 	}
 
 	@Override
-	public void addRetailer(Retailer retailer) {
-		// TODO Auto-generated method stub
-		retailerRepo.addRetailer(retailer);
-		
+	public Retailer addRetailer(Retailer retailer) {
+		 return retailerRepo.addRetailer(retailer);
 	}
 
 	@Override
 	public Retailer getRetailerById(int retailerId) {
 		return retailerRepo.getRetailerById(retailerId);
+	}
+
+	@Override
+	public Retailer loginRetailer(String email, String password) {
+		return retailerRepo.loginRetailer(email, password);
 	}
 
 }

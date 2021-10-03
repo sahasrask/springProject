@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlineshopping.dto.LoginDto;
 import com.onlineshopping.dto.ProductDto;
 import com.onlineshopping.dto.RetailerDto;
 import com.onlineshopping.entity.Product;
 import com.onlineshopping.entity.Retailer;
+import com.onlineshopping.entity.User;
 import com.onlineshopping.service.RetailerService;
 
 @RestController
@@ -54,19 +56,24 @@ public class RetailerController {
 	}
 	
 	@PostMapping(path="/addRetailer")
-	public void addRetailer(@RequestBody RetailerDto retailerDto) {
+	public Retailer addRetailer(@RequestBody RetailerDto retailerDto) {
 		try {
 			Retailer retailer=new Retailer();
 			retailer.setRetailerName(retailerDto.getRetailerName());
 			retailer.setRetailerEmail(retailerDto.getRetailerEmail());
 			retailer.setRetailerPassword(retailerDto.getRetailerPassword());
 			
-			retailerService.addRetailer(retailer);
+			return retailerService.addRetailer(retailer);
 			
 		}catch(Exception e) {
-			System.out.println("couldnot add");
+			System.out.println("could not add");
 		}
+		return null;
 		
 	}
 
+	@PostMapping("/loginRetailer")
+	public Retailer login(@RequestBody LoginDto user) {
+		return retailerService.loginRetailer(user.getEmail(), user.getPassword());
+	}
 }

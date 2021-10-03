@@ -46,6 +46,7 @@ public class Product {
 	
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="retailerId")
 	Retailer retailer;
 		

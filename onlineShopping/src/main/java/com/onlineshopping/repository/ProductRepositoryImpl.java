@@ -55,4 +55,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 				   .getResultList();
 	}
 
+	@Override
+	@Transactional
+	public List<Product> viewAllProductsOfRetailer(int retailerId) {
+		return em.createQuery("select p from Product p where p.retailer.retailerId=:id")
+				   .setParameter("id", retailerId)
+				   .getResultList();
+	}
+
 }

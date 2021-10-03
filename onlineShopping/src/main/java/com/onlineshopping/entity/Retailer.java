@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Retailer 
 {
@@ -26,6 +28,7 @@ public class Retailer
 	
 	
 	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
+	@JsonIgnore
 	List<Product> product;
 	
 	@ManyToOne

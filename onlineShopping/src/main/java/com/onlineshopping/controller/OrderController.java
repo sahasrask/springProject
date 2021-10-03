@@ -65,7 +65,10 @@ public class OrderController {
 		o.setOrderStatus(OrderStatus.APPROVED);
 		//set user this statement please check
 		User u=userService.findUserByUserId(userId);
-		System.out.println("User="+u);
+		List<Order> currentOrderList= u.getOrders();
+		currentOrderList.add(o);
+		u.setOrders(currentOrderList);
+		//System.out.println("User="+u);
 		o.setUser(u);
 		cartItemsService.emptyCart(cartId);
 		cartService.emptyCart(cartId);

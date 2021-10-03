@@ -42,7 +42,6 @@ public class CartRepositoryImpl implements CartRepository{
 	@Override
 	@Transactional
 	public Cart getCartById(int cartId) {
-		// TODO Auto-generated method stub
 		return em.find(Cart.class,cartId);
 	}
 

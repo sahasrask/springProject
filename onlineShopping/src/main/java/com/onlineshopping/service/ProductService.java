@@ -10,4 +10,5 @@ public interface ProductService {
 	void updateProduct(Product product);
 	int removeProduct(int productId);
 	List<Product> viewAllProducts();
+	List<Product> viewAllProductsOfRetailer(int retailerId);
 }
