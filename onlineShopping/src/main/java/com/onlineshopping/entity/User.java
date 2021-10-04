@@ -1,9 +1,11 @@
 package com.onlineshopping.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,12 +16,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name="tbl_users")
-public class User {
+public class User{
 	
 	@Id
 	@SequenceGenerator(name="usr_seq",initialValue = 1000,allocationSize = 1)
@@ -31,7 +36,7 @@ public class User {
 	private String email;
 	private String password;
 	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Order> orders;
 	

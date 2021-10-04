@@ -9,25 +9,10 @@ import com.onlineshopping.entity.User;
 
 public interface AdminService {
 	
+	List<Retailer> viewAllRetailers();
 	
+	boolean approveRetailer(int retailerId);
 	
-	//Retailer addRetailer(Retailer retailer);
-	
-	//void deleteRetailer(Retailer retailer);
-	
-	//Retailer findRetailerByRetailerId(int userId);
-		
-	//List<Retailer> viewAllRetailers();
-	void addOrUpdateAdmin(Admin admin);
-	
-	List<User> viewAllUsers();
-	
-	User findUserByUserId(int userId);
-	
-	void addProduct(Product product);
-	
-	List<Product> viewAllProducts();
-	
-	Product findProductById(int productId);
+	Retailer findRetailerById(int retailerId);
 
 }

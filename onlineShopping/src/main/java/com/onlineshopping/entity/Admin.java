@@ -12,7 +12,6 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Admin {
-	
 	@Id
 	@SequenceGenerator(name="admin_seq",initialValue = 1000,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "admin_seq")
@@ -24,7 +23,7 @@ public class Admin {
 	String adminPassword;
 	
 	
-	@OneToMany
+	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
 	List<Retailer> retailer;
 	
 

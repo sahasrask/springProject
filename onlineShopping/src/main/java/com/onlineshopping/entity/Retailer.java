@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Retailer 
@@ -25,9 +28,11 @@ public class Retailer
 	
 	
 	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
+	@JsonIgnore
 	List<Product> product;
 	
 	@ManyToOne
+	@JoinColumn(name="adminId")
 	Admin admin;
 	
 	

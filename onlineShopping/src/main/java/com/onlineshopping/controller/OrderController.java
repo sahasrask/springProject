@@ -17,10 +17,12 @@ import com.onlineshopping.entity.CartItems;
 import com.onlineshopping.entity.Order;
 import com.onlineshopping.entity.OrderItems;
 import com.onlineshopping.entity.OrderStatus;
+import com.onlineshopping.entity.User;
 import com.onlineshopping.service.CartItemsService;
 import com.onlineshopping.service.CartService;
 import com.onlineshopping.service.OrderItemsService;
 import com.onlineshopping.service.OrderService;
+import com.onlineshopping.service.UserService;
 
 @RestController
 @CrossOrigin("*")
@@ -38,8 +40,11 @@ public class OrderController {
 	@Autowired
 	OrderItemsService orderItemsService;
 	
+	@Autowired
+	UserService userService;
+	
 	@PostMapping("/addOrder")
-	public Order addOrder(@RequestParam("cartId") int cartId)
+	public Order addOrder(@RequestParam("cartId") int cartId,@RequestParam("userId") int userId)
 	{
 		Order o=orderService.createOrder();
 		List<CartItems> cli= cartItemsService.getAllCartItems(cartId);
@@ -53,13 +58,20 @@ public class OrderController {
 			item.setOrder(o);
 			item.setProduct(c.getProduct());
 			oli.add(orderItemsService.addOrderItem(item));
-			totalAmount+=c.getProduct().getProductPrice()*c.getQuantity();
-			
+			totalAmount+=c.getProduct().getProductPrice()*c.getQuantity();		
 		}
 		o.setOrderItems(oli);
 		o.setTotalOrderAmount(totalAmount);
 		o.setOrderStatus(OrderStatus.APPROVED);
+		//set user this statement please check
+		User u=userService.findUserByUserId(userId);
+		List<Order> currentOrderList= u.getOrders();
+		currentOrderList.add(o);
+		u.setOrders(currentOrderList);
+		//System.out.println("User="+u);
+		o.setUser(u);
 		cartItemsService.emptyCart(cartId);
+		cartService.emptyCart(cartId);
 		return o;
 	 }
 	

@@ -2,6 +2,8 @@ package com.onlineshopping.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,12 +34,16 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int removeProduct(int productId) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public List<Product> viewAllProducts() {
 		return productRepo.viewAllProducts();
+	}
+
+	@Override
+	public List<Product> viewAllProductsOfRetailer(int retailerId) {
+		return productRepo.viewAllProductsOfRetailer(retailerId);
 	}
 }

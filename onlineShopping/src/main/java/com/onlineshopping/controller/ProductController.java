@@ -54,6 +54,16 @@ public class ProductController {
 		return null;
 	}
 	
+	@GetMapping(path="/viewAllProductsOfRetailer")
+	public List<Product> viewAllProductsOfRetailer(@RequestParam("retailerId") int retailerId, HttpServletRequest request){
+		try {
+			return productService.viewAllProductsOfRetailer(retailerId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@GetMapping(path="/displayProduct")
 	public Product displayProduct(@RequestParam("productId") int id, HttpServletRequest request){
 		try {

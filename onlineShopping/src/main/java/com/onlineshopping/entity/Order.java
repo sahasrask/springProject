@@ -1,5 +1,6 @@
 package com.onlineshopping.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,9 +15,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name ="tbl_orders")
-public class Order {
+public class Order implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name="order_seq",initialValue = 1,allocationSize = 1)
@@ -28,6 +32,7 @@ public class Order {
 //	List<Product> products;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="userId")
 	User user;
 	
