@@ -14,4 +14,6 @@ public interface ProductRepository {
 	List<Product> viewProductsByCategory(String productCategory);
 	List<Product> viewProductByPrice(double productPrice);
 	List<Product> viewProductsByRating(double productRating);
+	List<Product> viewNotApprovedProducts();
+	Product approveProduct(int productId);
 }

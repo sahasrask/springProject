@@ -46,4 +46,10 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> viewAllProductsOfRetailer(int retailerId) {
 		return productRepo.viewAllProductsOfRetailer(retailerId);
 	}
+
+	@Override
+	public List<Product> viewNotApprovedProducts() {
+		// TODO Auto-generated method stub
+		return productRepo.viewNotApprovedProducts();
+	}
 }

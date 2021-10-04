@@ -63,4 +63,19 @@ public class ProductRepositoryImpl implements ProductRepository {
 				   .getResultList();
 	}
 
+	@Override
+	public List<Product> viewNotApprovedProducts() {
+		// TODO Auto-generated method stub
+		return em.createQuery("select p from Product p where p.adminApproval=:false")
+				   .getResultList();
+	}
+
+	@Override
+	public Product approveProduct(int productId) {
+		// TODO Auto-generated method stub
+		Product p = em.find(Product.class, productId);
+		//
+		return null;
+	}
+
 }

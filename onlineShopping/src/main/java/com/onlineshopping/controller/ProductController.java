@@ -73,5 +73,15 @@ public class ProductController {
 		}
 		return null;
 	}
+	
+	@GetMapping(path="/viewNotApprovedProducts")
+	public List<Product> viewNotApprovedProducts(){
+		try {
+			return productService.viewNotApprovedProducts();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
