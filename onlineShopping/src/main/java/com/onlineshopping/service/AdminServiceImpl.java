@@ -19,20 +19,22 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<Retailer> viewAllRetailers() {
-		// TODO Auto-generated method stub
 		return adminrepo.viewAllRetailers();
 	}
 
 	@Override
 	public boolean approveRetailer(int retailerId) {
-		// TODO Auto-generated method stub
 		return adminrepo.approveRetailer(retailerId);
 	}
 
 	@Override
 	public Retailer findRetailerById(int retailerId) {
-		// TODO Auto-generated method stub
 		return adminrepo.findRetailerById(retailerId);
+	}
+
+	@Override
+	public Admin loginAdmin(String email, String password) {
+		return adminrepo.loginAdmin(email, password);
 	}
 
 

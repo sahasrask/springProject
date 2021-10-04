@@ -77,7 +77,7 @@ public class RetailerController {
 	
 	@PostMapping("/imageUpload")
 	public String productImageUpload(DocumentDto documentDto) {
-		String docUploadLocation = "c:/uploads/";
+		String docUploadLocation = "f:/uploads/";
 		String fileName = documentDto.getProductImage().getOriginalFilename();
 		String targetFile = docUploadLocation + fileName;
 		try {

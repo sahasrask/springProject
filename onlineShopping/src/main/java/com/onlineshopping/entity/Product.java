@@ -29,6 +29,7 @@ public class Product {
 	String productImageURL;
 	String productCategory;
 	double productPrice;
+	boolean adminApproval;
 	
 //	@ManyToOne
 //	@JoinColumn(name="orderId")
@@ -64,11 +65,19 @@ public class Product {
 		this.productImageURL = productImageURL;
 		this.productCategory = productCategory;
 		this.productPrice = productPrice;
+		this.adminApproval=false;
 //		this.order = order;
 //		this.cart = cart;
 //		this.retailer = retailer;
 	}
+	
+	public boolean isAdminApproval() {
+		return adminApproval;
+	}
 
+	public void setAdminApproval(boolean adminApproval) {
+		this.adminApproval = adminApproval;
+	}
 
 	public int getProductId() {
 		return productId;
