@@ -25,9 +25,7 @@ public class ProductController {
 	
 	@PostMapping(path="/addProduct")
 	public int add(@RequestBody ProductDto productDto) {
-		try {
-
-			
+		try {	
 			Product p=new Product();
 			p.setProductName(productDto.getProductName());
 			p.setProductQuantity(productDto.getProductQuantity());

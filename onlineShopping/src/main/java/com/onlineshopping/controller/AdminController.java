@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlineshopping.dto.LoginDto;
+import com.onlineshopping.entity.Admin;
 import com.onlineshopping.entity.Retailer;
 import com.onlineshopping.service.AdminService;
 
@@ -39,6 +41,11 @@ public class AdminController {
 	{
 		adminService.approveRetailer(retailerId);
 		return true;
+	}
+	
+	@PostMapping("/loginAdmin")
+	public Admin login(@RequestBody LoginDto admin) {
+		return adminService.loginAdmin(admin.getEmail(), admin.getPassword());
 	}
 	
 //	@PostMapping("/addAdmin")

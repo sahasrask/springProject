@@ -28,13 +28,16 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	@Transactional
 	public User loginUser(String email, String password){
-		
+		User u=null;
+		try {
 		String jpql="select u from User u where u.email=:em and u.password=:pwd";
 		Query query=em.createQuery(jpql);
 		query.setParameter("em", email);
 		query.setParameter("pwd", password);
-		User u;
 		u= (User) query.getSingleResult();
+		}catch(Exception e) {
+			
+		}
 		//User u =em.find(User.class, email);
 		return u;
 	}

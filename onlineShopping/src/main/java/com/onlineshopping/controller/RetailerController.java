@@ -29,9 +29,7 @@ public class RetailerController {
 	
 	@PostMapping(path="/addRetailerProducts")
 	public void add(@RequestBody ProductDto productDto,@RequestParam("retailerId") int retailerId) {
-		try {
-
-			
+		try {	
 			Product p=new Product();
 			p.setProductName(productDto.getProductName());
 			p.setProductQuantity(productDto.getProductQuantity());
@@ -79,7 +77,7 @@ public class RetailerController {
 	
 	@PostMapping("/imageUpload")
 	public String productImageUpload(DocumentDto documentDto) {
-		String docUploadLocation = "c:/uploads/";
+		String docUploadLocation = "f:/uploads/";
 		String fileName = documentDto.getProductImage().getOriginalFilename();
 		String targetFile = docUploadLocation + fileName;
 		try {

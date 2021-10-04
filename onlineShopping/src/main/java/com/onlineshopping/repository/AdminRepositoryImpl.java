@@ -44,7 +44,23 @@ public class AdminRepositoryImpl implements AdminRepository{
 		return r;
 	}
 
-	
+	@Override
+	@Transactional
+	public Admin loginAdmin(String email, String password) {
+		Admin a=null;
+		String jpql="select a from Admin a where a.adminEmail=:em and a.adminPassword=:pwd";
+		Query query=em.createQuery(jpql);
+		query.setParameter("em", email);
+		query.setParameter("pwd", password);
+		a = (Admin) query.getSingleResult();
+		return a;
+		
+//		try {
+//		}catch(Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+//		return null;
+	}
 
 }
 
