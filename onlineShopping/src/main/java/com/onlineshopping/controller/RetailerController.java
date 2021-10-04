@@ -1,12 +1,17 @@
 package com.onlineshopping.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlineshopping.dto.DocumentDto;
 import com.onlineshopping.dto.ProductDto;
 import com.onlineshopping.dto.RetailerDto;
 import com.onlineshopping.entity.Product;
@@ -66,6 +71,22 @@ public class RetailerController {
 		}catch(Exception e) {
 			System.out.println("couldnot add");
 		}
+		
+	}
+	
+	@PostMapping("/imageUpload")
+	public Retailer productImageUpload(DocumentDto documentDto) {
+		String docUploadLocation = "c:/uploads/";
+		String fileName = documentDto.getProductImage().getOriginalFilename();
+		String targetFile = docUploadLocation + fileName;
+		try {
+			FileCopyUtils.copy(documentDto.getProductImage().getInputStream(), new FileOutputStream(targetFile));
+			return retailerService.getRetailerById(documentDto.getRetailerId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 		
 	}
 
