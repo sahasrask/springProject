@@ -29,9 +29,7 @@ public class RetailerController {
 	
 	@PostMapping(path="/addRetailerProducts")
 	public void add(@RequestBody ProductDto productDto,@RequestParam("retailerId") int retailerId) {
-		try {
-
-			
+		try {	
 			Product p=new Product();
 			p.setProductName(productDto.getProductName());
 			p.setProductQuantity(productDto.getProductQuantity());
