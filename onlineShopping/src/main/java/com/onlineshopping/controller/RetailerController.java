@@ -76,13 +76,14 @@ public class RetailerController {
 	}
 	
 	@PostMapping("/imageUpload")
-	public Retailer productImageUpload(DocumentDto documentDto) {
+	public String productImageUpload(DocumentDto documentDto) {
 		String docUploadLocation = "c:/uploads/";
 		String fileName = documentDto.getProductImage().getOriginalFilename();
 		String targetFile = docUploadLocation + fileName;
 		try {
 			FileCopyUtils.copy(documentDto.getProductImage().getInputStream(), new FileOutputStream(targetFile));
-			return retailerService.getRetailerById(documentDto.getRetailerId());
+			//return retailerService.getRetailerById(documentDto.getRetailerId());
+			return docUploadLocation;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
