@@ -12,4 +12,5 @@ public interface ProductService {
 	List<Product> viewAllProducts();
 	List<Product> viewAllProductsOfRetailer(int retailerId);
 	List<Product> viewNotApprovedProducts();
+	Product approveProduct(int productId);
 }

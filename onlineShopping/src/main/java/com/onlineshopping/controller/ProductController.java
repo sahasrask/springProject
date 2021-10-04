@@ -81,5 +81,12 @@ public class ProductController {
 		}
 		return null;
 	}
+	
+	@PostMapping(path="/approveProduct")
+	public Product approveProduct(@RequestParam("productId") int id, HttpServletRequest request)
+	{
+		return productService.approveProduct(id);
+	}
+	
 
 }

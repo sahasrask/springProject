@@ -74,8 +74,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	public Product approveProduct(int productId) {
 		// TODO Auto-generated method stub
 		Product p = em.find(Product.class, productId);
-		//
-		return null;
+		p.setAdminApproval(true);
+		return em.merge(p);
 	}
 
 }
