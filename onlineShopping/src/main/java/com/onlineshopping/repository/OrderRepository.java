@@ -10,4 +10,5 @@ public interface OrderRepository {
 	void cancelOrder(Order order);
 	Order repeatOrder(Order order);
 	Order viewOrderDetails(int orderId);
+	List<Order> getOrdersByUserId(int userId);
 }

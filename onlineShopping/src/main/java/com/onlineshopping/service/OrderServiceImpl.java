@@ -1,5 +1,7 @@
 package com.onlineshopping.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,12 @@ public class OrderServiceImpl implements OrderService {
 	public Order viewOrderDetails(int orderId) {
 		// TODO Auto-generated method stub
 		return orderRepo.viewOrderDetails(orderId);
+	}
+
+	@Override
+	public List<Order> getOrdersByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return orderRepo.getOrdersByUserId(userId);
 	}
 
 }
