@@ -15,5 +15,6 @@ public interface ProductRepository {
 	List<Product> viewProductByPrice(double productPrice);
 	List<Product> viewProductsByRating(double productRating);
 	List<Product> viewNotApprovedProducts();
+	List<Product> viewApprovedProducts();
 	Product approveProduct(int productId);
 }

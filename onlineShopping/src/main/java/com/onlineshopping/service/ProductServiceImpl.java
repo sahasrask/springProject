@@ -49,13 +49,16 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> viewNotApprovedProducts() {
-		// TODO Auto-generated method stub
 		return productRepo.viewNotApprovedProducts();
 	}
 
 	@Override
 	public Product approveProduct(int productId) {
-		// TODO Auto-generated method stub
 		return productRepo.approveProduct(productId);
+	}
+
+	@Override
+	public List<Product> viewApprovedProducts() {
+		return productRepo.viewApprovedProducts();
 	}
 }

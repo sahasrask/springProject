@@ -48,12 +48,16 @@ public class RetailerRepositoryImpl implements RetailerRepository
 
 	@Override
 	public Retailer loginRetailer(String email, String password) {
+		Retailer r=null;		
+		try {
 		String jpql="select r from Retailer r where r.retailerEmail=:em and r.retailerPassword=:pwd";
 		Query query=em.createQuery(jpql);
 		query.setParameter("em", email);
 		query.setParameter("pwd", password);
-		Retailer r;
 		r= (Retailer) query.getSingleResult();
+		}catch(Exception e) {
+			
+		}
 		//User u =em.find(User.class, email);
 		return r;
 	}

@@ -80,6 +80,7 @@ public class RetailerController {
 		String docUploadLocation = "f:/uploads/";
 		String fileName = documentDto.getProductImage().getOriginalFilename();
 		String targetFile = docUploadLocation + fileName;
+		System.out.println("Target file="+targetFile);
 		try {
 			FileCopyUtils.copy(documentDto.getProductImage().getInputStream(), new FileOutputStream(targetFile));
 			//return retailerService.getRetailerById(documentDto.getRetailerId());
@@ -87,9 +88,7 @@ public class RetailerController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
-		
-		
+		return "fail";
 	}
 
 	@PostMapping("/loginRetailer")
